@@ -1,0 +1,39 @@
+@CHARSET "ISO-8859-1";
+form{
+background-color:#fff;
+color:#123456;
+box-shadow:0 1px 1px 1px gray;
+width:500px;
+margin:0px 250px 0 0px;
+float:left;
+height:400px;
+padding:10px;
+}
+input{
+width:250px;
+height:30px;
+margin-top:10px;
+border-radius:3px;
+padding:2px;
+box-shadow:0 1px 1px 0 #a9a9a9;
+margin:10px;
+}
+input[type=button]{
+background-color:#0B87AA;
+border:1px solid #fff;
+font-family:'Fauna One',serif;
+font-weight:700;
+font-size:18px;
+color:#fff;
+width:50%;
+margin-left:105px;
+margin-top:30px;
+}
+span{
+color:green;
+
+}
+#myForm div{
+color:red;
+font-size:14px;
+}

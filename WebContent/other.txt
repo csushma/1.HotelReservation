@@ -1,0 +1,123 @@
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+	    <div class="container">
+			<div id="navbar" class="navbar-collapse collapse">
+	          <form class="navbar-form navbar-right">
+	            <div class="form-group">
+	              <input type="text" placeholder="Email" class="form-control">
+	            </div>
+	            <div class="form-group">
+	              <input type="password" placeholder="Password" class="form-control">
+	            </div>
+	            <button type="submit" class="btn btn-success">Sign in</button>
+	          </form>
+	        </div>
+		</div>
+	</nav>
+	
+	
+	      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      
+        padding-top: 20px;
+        
+        	<div style="visibility: hidden;" id="checkInCalendar" class="calendarContainer"></div>
+    <div style="visibility: hidden;" id="checkOutCalendar" class="calendarContainer"></div>
+    
+    				<address>
+					<strong>2440 Victory park lane</strong><br>
+					Dallas<br>
+					Texas 75219<br>
+					Phone:(123) 456-7890
+				</address>
+				
+			  <filter>
+  <filter-name>CompressingFilter</filter-name>
+	<filter-class>com.planetj.servlet.filter.compression.CompressingFilter</filter-class>  
+  <init-param>
+   <param-name>debug</param-name>
+   <param-value>true</param-value>
+  </init-param>
+  <init-param>
+         <param-name>compressionThreshold</param-name>
+         <param-value>0</param-value>
+      </init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CompressingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+  <filter>
+      <filter-name>struts2</filter-name>
+      <filter-class>
+         org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+      </filter-class>
+   </filter>
+
+   <filter-mapping>
+      <filter-name>struts2</filter-name>
+      <url-pattern>/*</url-pattern>
+   </filter-mapping>	
+				
+				
+				
+					 $.ajax({
+		    url: "http://localhost:8080/HotelReservation/rest/cab/book",
+		    data: {
+		        location:form1,
+		        pickupdate:form2,
+		        cartype:carType,
+		        pickuptime:form4
+		    },
+		    type: "POST",
+		    dataType : "text",
+		    success: function( data ) {
+		    	 alert(data);
+		    },
+		    error: function (request, status, error) {
+              alert(request.responseText);
+            }
+		});
+		
+			public String logout(Login login){
+		setCust_email(login.getCustomer_email());
+		Configuration config = new AnnotationConfiguration();
+		SessionFactory sessionFactory=config.configure("hibernate.cfg.xml").buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		Query q = session.createQuery("Delete from Login where customer_email = :email ");
+		q.setParameter("email", cust_email);
+		q.executeUpdate();	
+		if(!tx.wasCommitted())
+			tx.commit();					
+		session.close();
+		return "success";
+	}
+		
+		
+		
+		
+		   <result name="error">/login.jsp</result>
+		
+		
+		  <action name="login" 
+            class="com.wpl.hotelreservation.resource.LoginResource" method="verifylogin">
+            <result name="success">/Homepage.html</result>
+            <result name="failure">/Register.html</result>
+      </action>
+		
+		
+		
+		
+			
+	var checkindate = document.getElementById("element_1").value;
+	var checkoutdate = document.getElementById("element_4").value;
+	if(checkindate > checkoutdate){
+		alert("Checkin Date cannot be greater than Checkout date");
+	}
+	else{

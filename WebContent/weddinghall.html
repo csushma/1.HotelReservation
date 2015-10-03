@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Dallas - Victory Hotel | Banquethall Reservations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="./CSS1/style1.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="./CSS1/homepage.css" />
+<link rel="stylesheet" type="text/css" href="./CSS1/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="./CSS1/bootstrap.css" />
+<link rel="icon" type="image/ico" href="./Images/favicon.jpg" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script> 
+$(function(){
+  $("#header").load("header.html"); 
+  $("#footer").load("footer.html"); 
+});
+</script>
+<script>
+$(function(){
+  $("#wed").click(function(){
+	var form1 = document.getElementById("element_1").value;
+	
+	var form2 = document.getElementById("element_2");
+	var wedType = form2.options[form2.selectedIndex].text;
+
+	var form3 = document.getElementById("element_3").value;
+	var form4 = document.getElementById("element_4").value;
+	if(form3 > form4){
+		alert("Your checkin date cannot be greater than checkout date");
+	}
+	else{
+		alert("Your Banquet Hall is booked");
+	 $.ajax({
+		    url: "http://localhost:8080/HotelReservation/rest/banquethall/book",
+		    data: {
+		    	email:form1,
+		    	hall_type:wedType,
+		    	checkindate:form3,
+		    	checkoutdate:form4,
+		    },
+		    type: "POST",
+		    dataType : "text",
+ 		    success: function( data ) {
+ 		//    	alert("Your Room is booked");
+		  //  },
+		//    error: function (request, status, error) {
+         //  		alert(request.responseText);
+         }
+	  });
+	}
+  });
+});
+</script>
+</head>
+<body >
+<!-- start header -->
+
+<div id="header"></div>
+<!--start main -->
+<div class="main_bg">
+<div class="wrap">
+
+	<div class="res_online">
+		  <img src="./Images/wedding3.jpg" alt="Slide 1" style="width:100%;height:500px"/>     
+    </div>
+    <div class="main">
+    <h3 style="color: black">Book a Banquet Hall</h3>
+    <form>
+    <div class="span_of_2">
+				<div class="span2_of_1">
+				<h4>E-mail</h4>
+						<div class="book_date btm">
+							<input id="element_1" class="textbox" type="email" placeholder="Enter your email address" required>
+						</div>
+				<h4 id="hed">Hall Type</h4>
+					<div class="book_date btm">
+						<select id="element_2"  class="frm-field required">
+							<option value="null">Select Hall </option>
+							<option value="Wedding Hall ">Wedding Hall </option>
+							<option value="Conference Hall">Conference Hall</option>			         
+		        		</select>
+					</div>				
+				</div>
+				<div class="span2_of_1">
+					<div >
+					<h4>check-in:</h4>
+					<div class="book_date btm">
+							<input id="element_3" class="textbox" type="date" >
+					</div>
+						
+					</div>	
+						
+					<div >
+					<h4>check-out:</h4>
+					<div class="book_date btm">
+							<input id="element_4" class="textbox" type="date">
+					</div>
+						
+					</div>	
+					</div>
+				<div class="clear"></div>
+			
+			<div class="res_btn">
+					<input type="submit" id="wed" value="BOOK NOW" style="width: 280px; background: #32A2E3; font-family: 'Open Sans', sans-serif; color: #FFF;">			
+			</div></div>
+			</form>
+	</div>
+</div>
+</div>		
+    
+<!--start main -->
+
+         <!-- FOOTER -->
+ 
+<div id="footer"></div>
+      
+        <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="./Javascript/bootstrap.min.js"></script>
+
+
+	
+</body>
+</html>
